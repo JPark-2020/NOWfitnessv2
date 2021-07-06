@@ -1,0 +1,153 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+    {% comment %} Bootstrap {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    {% comment %} Static Files  {% endcomment %}
+    <link rel="stylesheet" href={%static 'styles/base.css'%}/>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    {%block css_files%}{%endblock%}
+    {%block js_files%}{%endblock%}
+</head>
+<body>
+{% comment %} NAVBAR {% endcomment %}
+{% if user.is_authenticated %}
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="32" height="32" preserveAspectRatio="xMinYMin" class="icon__icon"><path d="M9.808 12.971l.076-1.064.927-.529A11.644 11.644 0 0 0 13.243 9.5c2.64-2.641 3.446-5.746 2.475-6.718-.972-.97-4.077-.166-6.718 2.475-.76.76-1.397 1.59-1.878 2.432l-.53.927-1.063.076a3.973 3.973 0 0 0-2.355.988 10.984 10.984 0 0 1 3.351 2.295c.98.98 1.752 2.117 2.295 3.351a3.973 3.973 0 0 0 .988-2.355zM6.835 15.8a6.687 6.687 0 0 1-.663.771C5 17.743 3.232 18.096.868 17.631c-.464-2.363-.11-4.131 1.06-5.303.248-.246.506-.468.772-.663a8.975 8.975 0 0 0-2.598-.81 5.974 5.974 0 0 1 1.473-2.416 5.977 5.977 0 0 1 3.81-1.741 13.637 13.637 0 0 1 2.2-2.855c3.32-3.32 7.594-4.427 9.547-2.475 1.952 1.953.844 6.227-2.475 9.546a13.637 13.637 0 0 1-2.855 2.2 5.977 5.977 0 0 1-1.741 3.81 5.955 5.955 0 0 1-2.416 1.474 8.975 8.975 0 0 0-.81-2.598zM5.11 13.39a2.6 2.6 0 0 0-.54-.415c-.432.15-.94.48-1.405.944-.219.22-.487.959-.49 1.905.946-.003 1.688-.274 1.905-.49.465-.466.795-.973.944-1.405a2.6 2.6 0 0 0-.414-.54zm7.778-7.78a1 1 0 1 1 1.414-1.413A1 1 0 0 1 12.89 5.61z"></path></svg>
+    <a id="navLOGO" class="navbar-brand" href="">NOW!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href=""> HOME</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" href="">ABOUT</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">ENTRIES</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">FITNESS TRACKER</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                WORKOUTS
+            </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="">Workouts Index</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="">Bodyweight</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="">Boxing</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="">Yoga</a></li>
+                </ul>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">LOGOUT</a>
+             </li>
+        </ul>
+
+{% else %}
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="32" height="32" preserveAspectRatio="xMinYMin" class="icon__icon"><path d="M9.808 12.971l.076-1.064.927-.529A11.644 11.644 0 0 0 13.243 9.5c2.64-2.641 3.446-5.746 2.475-6.718-.972-.97-4.077-.166-6.718 2.475-.76.76-1.397 1.59-1.878 2.432l-.53.927-1.063.076a3.973 3.973 0 0 0-2.355.988 10.984 10.984 0 0 1 3.351 2.295c.98.98 1.752 2.117 2.295 3.351a3.973 3.973 0 0 0 .988-2.355zM6.835 15.8a6.687 6.687 0 0 1-.663.771C5 17.743 3.232 18.096.868 17.631c-.464-2.363-.11-4.131 1.06-5.303.248-.246.506-.468.772-.663a8.975 8.975 0 0 0-2.598-.81 5.974 5.974 0 0 1 1.473-2.416 5.977 5.977 0 0 1 3.81-1.741 13.637 13.637 0 0 1 2.2-2.855c3.32-3.32 7.594-4.427 9.547-2.475 1.952 1.953.844 6.227-2.475 9.546a13.637 13.637 0 0 1-2.855 2.2 5.977 5.977 0 0 1-1.741 3.81 5.955 5.955 0 0 1-2.416 1.474 8.975 8.975 0 0 0-.81-2.598zM5.11 13.39a2.6 2.6 0 0 0-.54-.415c-.432.15-.94.48-1.405.944-.219.22-.487.959-.49 1.905.946-.003 1.688-.274 1.905-.49.465-.466.795-.973.944-1.405a2.6 2.6 0 0 0-.414-.54zm7.778-7.78a1 1 0 1 1 1.414-1.413A1 1 0 0 1 12.89 5.61z"></path></svg>
+    <a class="navbar-brand" href="">NOW!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <button type="button" class="btn btn-link">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">HOME</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-link">
+            <li class="nav-item">
+              <a class="nav-link active" href="">ABOUT</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-link">
+            <li class="nav-item">
+              <a class="nav-link active" href="">WORKOUTS</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <li class="nav-item">
+                <a class="nav-link active"  id="loginNav" aria-current="page">LOGIN</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <li class="nav-item">
+                <a class="nav-link active"  id="registerNav" aria-current="page">REGISTER</a>
+            </li>
+            </button>
+        </ul>
+{% endif %}
+    </div>
+    </div>
+</nav>
+
+{% comment %} MODAL FORM{% endcomment %}
+
+<!-- Modal 1 : Login -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="">
+          {% csrf_token %} 
+            <input type="text" id="username" name="username" placeholder="Username" /><br>
+            <input type="password" id="password" name="password" placeholder="Password" /><br>
+            <input type="submit" name="Submit" id="submit" value="Log In">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} Modal 2: Signup {% endcomment %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="">
+            {% csrf_token %}  
+            <input type="text" id="username" name="username" placeholder="Username" /><br>
+            <input type="password" id="password1" name="password1" placeholder="Password" /><br>
+            <input type="password" id="password2" name="password2" placeholder="Confirm Password" /><br>
+            <br>
+            <input type="submit" name="Submit" id="submit" value="Sign Up">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{%block content%} {%endblock%}
+</body>
+</html>
+
