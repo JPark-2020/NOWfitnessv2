@@ -29,7 +29,7 @@ class Exercise(Model):
 class Workout(Model):
     name = models.CharField(max_length=40)
     description = models.TextField()
-    exercises = ManyToManyField(Exercise, null=True)
+    exercises = ManyToManyField(Exercise, blank=True)
 
     def __str__(self):
         return self.name 
