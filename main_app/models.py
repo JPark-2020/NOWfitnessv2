@@ -22,15 +22,20 @@ class Exercise(Model):
     def __str__(self):
         return self.name 
 
+    class Meta:
+        ordering = ['name']
 
 #Many Workouts have many exercises. Many Exercises have many workouts. 
 class Workout(Model):
     name = models.CharField(max_length=40)
     description = models.TextField()
-    exercises = ManyToManyField(Exercise)
+    exercises = ManyToManyField(Exercise, null=True)
 
     def __str__(self):
         return self.name 
+
+    class Meta:
+        ordering = ['name']
 
 #One Tracker has One User 
 #One Tracker has one workout, One workout has many trackers 
@@ -44,6 +49,8 @@ class Tracker(Model):
     def __str__(self):
         return f'{self.user.username}: {self.date_custom} - {self.tracked_workout}'
 
+    class Meta:
+        ordering = ['date_custom']
     
 #One entry has one author. One author has many entries. 
 #One entry has one exercise. One exercise has many entries 
@@ -64,6 +71,6 @@ class Entry(Model):
     def __str__(self):
         return f'{self.author}: {self.date_custom} - {self.tracker}'
 
-
-
+    class Meta:
+        ordering = ['date_custom']
 
