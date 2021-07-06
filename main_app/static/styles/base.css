@@ -7,3 +7,93 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+.navbar {
+    width: 100vw; 
+}
+
+
+.homevideo{
+    width: 100vw;
+}
+
+video {
+    width: 100vw; 
+    width: 100%; 
+    display:block;
+}
+
+.home-main-grid{
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+    grid-column-gap: 30px; 
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 30px; 
+    grid-template-areas: ". gridhead gridhead gridhead ."
+                         ". griditem1 griditem2 griditem3 ."
+                         " . griditem1pic griditem2pic griditem3pic .";
+    background-color: gray; 
+    text-align: center; 
+    width: 100vw; 
+}
+
+.home-grid-header{
+    grid-area: gridhead; 
+    margin-top: 30px;
+}
+
+.home-grid-item1{
+    grid-area: griditem1;
+}
+
+.home-grid-item2{
+    grid-area:griditem2; 
+}
+
+.home-grid-item3{
+    grid-area:griditem3; 
+}
+
+.home-grid-item1pic{
+    grid-area: griditem1pic;
+}
+
+.home-grid-item1pic i,
+.home-grid-item2pic i,
+.home-grid-item3pic i {
+    font-size: 150px; 
+}
+
+.home-grid-item2pic{
+    grid-area:griditem2pic;
+}
+
+.home-grid-item3pic{
+    grid-area:griditem3pic; 
+}
+
+.call-to-action{
+    text-align: center;
+    background-color: beige;
+    padding: 100px; 
+    width: 100vw; 
+}
+
+footer ul{
+    text-align: center;  
+    padding: 50px; 
+    background-color: navy;
+    width: 100vw;
+    height: 100%;
+}
+footer ul li{
+    color: white; 
+}
+footer ul li a{
+    color: white; 
+    text-decoration: none;  
+    font-size: 22px; 
+}
+
+footer ul li a:hover{
+    font-size: 30px; 
+}
