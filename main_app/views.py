@@ -19,4 +19,19 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name ="about.html"
-    
+
+class SignUp(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            Profile.objects.create(user=user) 
+            login(request,user)
+            return redirect("/")
+        else:
+            return redirect("/")

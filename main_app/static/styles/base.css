@@ -7,7 +7,9 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-
+.nav-link:hover{
+    color: green !important; 
+}
 
 
 

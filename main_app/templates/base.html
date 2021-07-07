@@ -58,7 +58,7 @@
                 </ul>
             </li>
              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="">LOGOUT</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">LOGOUT</a>
              </li>
         </ul>
 
@@ -134,7 +134,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form method="POST" action="">
+          <form method="POST" action="{% url 'signup' %}">
             {% csrf_token %}  
             <input type="text" id="username" name="username" placeholder="Username" /><br>
             <input type="password" id="password1" name="password1" placeholder="Password" /><br>

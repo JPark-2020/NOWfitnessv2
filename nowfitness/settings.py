@@ -129,3 +129,6 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 
 
 DATETIME_FORMAT = '%m/%d/%y' 
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
