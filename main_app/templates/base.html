@@ -15,7 +15,7 @@
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
     {%block css_files%}{%endblock%}
     {%block js_files%}{%endblock%}
 </head>
@@ -35,7 +35,7 @@
             <a class="nav-link active" aria-current="page" href="{%url 'home-page'%}"> HOME</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" href="">ABOUT</a>
+            <a class="nav-link active" href="{%url 'profile-page'%}">PROFILE</a>
             </li>
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="">ENTRIES</a>
@@ -75,11 +75,6 @@
             <button type="button" class="btn">
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{%url 'home-page'%}">HOME</a>
-            </li>
-            </button>
-            <button type="button" class="btn">
-            <li class="nav-item">
-              <a class="nav-link active" href="{%url 'about-page'%}">ABOUT</a>
             </li>
             </button>
             <button type="button" class="btn">

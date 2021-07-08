@@ -13,12 +13,10 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator 
 from .models import Profile, Exercise, Tracker, Entry, Workout 
+from .forms import ProfileForm 
 
 class Home(TemplateView):
     template_name = "home.html" 
-
-class About(TemplateView):
-    template_name ="about.html"
 
 class SignUp(View):
     def get(self, request):
@@ -32,7 +30,7 @@ class SignUp(View):
             user = form.save()
             Profile.objects.create(user=user) 
             login(request,user)
-            return redirect("/")
+            return redirect("/profile/")
         else:
             return redirect("/")
     
@@ -68,3 +66,28 @@ class Workouts_Detail(View):
             workoutHTML = "workouts/bodyweight.html"
             context = {"workout":workout, "exercises":exercises, "type":newType, "workoutHTML":workoutHTML}
             return render(request, "workouts/workouts-detail.html", context)
+
+def store_file(file):
+    with open("temp/image.jpg", "wb+") as dest:
+        for chunk in file.chunks():
+            dest.write(chunk)
+
+class Profiles(View):
+    def get(self, request):
+        user_profile = Profile.objects.get(user_id=request.user)
+        form = ProfileForm()
+        context = {"form":form, "user_profile":user_profile}
+        return render(request, 'profile.html', context)
+
+    def post(self, request):
+        submitted_form = ProfileForm(request.POST, request.FILES)
+        context = {"form":submitted_form}
+        user_profile = Profile.objects.get(user=request.user)
+
+        if submitted_form.is_valid():
+            user_profile.image = request.FILES["user_image"]
+            user_profile.save()
+            
+            return redirect(request, 'profile.html')
+
+        return render(request, 'profile.html', context)
