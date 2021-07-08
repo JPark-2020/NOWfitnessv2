@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+
+
+
+<h2>{{user_profile.user.username}}</h2>
+
+{%if user_profile.image%}
+<img class="profileimage" src="{{user_profile.image.url}}">
+{%else%}
+<img class="profileimage" src="{%static 'images/avatar.png'%}">
+{%endif%}
+
+
+
+
+
+<form method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form}}
+    <button>Upload!</button>
+</form>
+
+<form method="POST">
+    {%csrf_token%}
+    {{form2}}
+    <button>Create</button>
+</form>
+
+
+
+
+<div>
+    <h2>My Workouts</h2>
+    {%for workout in user_workouts%}
+        <h2><a href="{%url 'myworkout' workout.name%}">{{workout.name}}</a></h2>
+    {%endfor%}
+</div>
+
+
+{%endblock%}

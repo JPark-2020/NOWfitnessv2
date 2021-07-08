@@ -306,3 +306,11 @@ footer ul li a:hover{
     font-weight:bold;  
     font-size: 30px; 
 }
+
+/* profile */
+
+.profileimage{
+    width:300px;
+    height:300px; 
+}
+

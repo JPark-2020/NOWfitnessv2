@@ -22,15 +22,15 @@
     <th>set4</th>
     <th>set5</th>
   </tr>
-{%for entry in all_entries%}
+{%for entry in user_entries%}
   <tr>
-    <td>{{entry.tracker.date|date:"F-d-Y"}}</td>
+    <td>{{entry.tracker.date_custom}}</td>
     <td>{{entry.exercise}}</td>
-    <td>{{entry.set1}}</td>
-    <td>{{entry.set2}}</td>
-    <td>{{entry.set3}}</td>
-    <td>{{entry.set4}}</td>
-    <td>{{entry.set5}}</td>
+    <td>{{entry.set_one}}</td>
+    <td>{{entry.set_two}}</td>
+    <td>{{entry.set_three}}</td>
+    <td>{{entry.set_four}}</td>
+    <td>{{entry.set_five}}</td>
   </tr>
 {%endfor%}
 </table>

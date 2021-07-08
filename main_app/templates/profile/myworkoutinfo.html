@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<h1>{{found_user_workout.name}}</h1>
+
+<ul>
+    <li>{{found_user_workout.custom_exercise_one}}</li>
+    <li>{{found_user_workout.custom_exercise_two}}</li>
+    <li>{{found_user_workout.custom_exercise_three}}</li>
+    <li>{{found_user_workout.custom_exercise_four}}</li>
+    <li>{{found_user_workout.custom_exercise_five}}</li>
+    <li>{{found_user_workout.custom_exercise_six}}</li>
+    <li>{{found_user_workout.custom_exercise_seven}}</li>
+    <li>{{found_user_workout.custom_exercise_eight}}</li>
+</ul>
+
+<form method="POST">
+    {%csrf_token%}
+    <button>Delete Workout</button>
+</form>
+
+{%endblock%}

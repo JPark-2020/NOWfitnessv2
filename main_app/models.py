@@ -13,12 +13,13 @@ class Profile(Model):
     def __str__(self):
         return self.user.username 
 
-
+#A Exercise has one creator. A creator can make many exercises. 
 class Exercise(Model):
     name = models.CharField(max_length=50) 
     image = models.CharField(max_length=5000) 
     description = models.TextField() 
-    category = models.CharField(max_length=15, null=True)
+    category = models.CharField(max_length=40, null=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name 
@@ -31,6 +32,15 @@ class Workout(Model):
     name = models.CharField(max_length=40)
     description = models.TextField()
     exercises = ManyToManyField(Exercise, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    custom_exercise_one = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_two = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_three = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_four = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_five = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_six = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_seven = models.CharField(max_length=40, blank=True, null=True)
+    custom_exercise_eight = models.CharField(max_length=40, blank=True, null=True)
     admin_created = models.BooleanField(null=True, default=False)
 
     def __str__(self):

@@ -13,7 +13,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator 
 from .models import Profile, Exercise, Tracker, Entry, Workout 
-from .forms import ProfileForm 
+from .forms import ProfileForm, WorkoutCreateForm  
+from django.db.models import Q 
 
 class Home(TemplateView):
     template_name = "home.html" 
@@ -67,39 +68,82 @@ class Workouts_Detail(View):
             context = {"workout":workout, "exercises":exercises, "type":newType, "workoutHTML":workoutHTML}
             return render(request, "workouts/workouts-detail.html", context)
 
-def store_file(file):
-    with open("temp/image.jpg", "wb+") as dest:
-        for chunk in file.chunks():
-            dest.write(chunk)
 
 class Profiles(View):
     def get(self, request):
         user_profile = Profile.objects.get(user_id=request.user)
         form = ProfileForm()
-        context = {"form":form, "user_profile":user_profile}
-        return render(request, 'profile.html', context)
+        form2 = WorkoutCreateForm()
+        user_workouts = Workout.objects.filter(Q(author_id=request.user.id) & Q(admin_created=False))
+        context = {"form":form, "user_profile":user_profile, "form2":form2, "user_workouts":user_workouts}
+        return render(request, 'profile/profile.html', context)
 
     def post(self, request):
-        submitted_form = ProfileForm(request.POST, request.FILES)
-        context = {"form":submitted_form}
-        user_profile = Profile.objects.get(user=request.user)
+        usersID = request.user 
 
-        if submitted_form.is_valid():
-            user_profile.image = request.FILES["user_image"]
-            user_profile.save()
-            
-            return HttpResponseRedirect('/profile/')
+        if 'user_image' in request.FILES:
+            submitted_form = ProfileForm(request.POST, request.FILES)
+            context = {"form":submitted_form}
+            userProfile = Profile.objects.get(user_id=usersID.id)
 
-        return render(request, 'profile.html', context)
+            if submitted_form.is_valid():
+                userProfile.image = request.FILES["user_image"]
+                userProfile.save()
+                
+                return HttpResponseRedirect('/profile/')
+
+        if 'name' in request.POST:
+            form2 = WorkoutCreateForm(request.POST)
+            context = {"form2":form2}
+
+            if form2.is_valid():
+                user_workout = form2.save(commit=False)
+                user_workout.author = User.objects.get(id=self.request.user.id)
+                Exercise.objects.create(name=user_workout.custom_exercise_one.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_two.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_three.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_four.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_five.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_six.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_seven.upper(), category=user_workout.name, creator=self.request.user)
+                Exercise.objects.create(name=user_workout.custom_exercise_eight.upper(), category=user_workout.name, creator=self.request.user)
+                form2.save()
+                return HttpResponseRedirect('/profile/')
+
+        return render(request, 'profile/profile.html', context)
+
+class ProfilesWorkouts(View):
+    def get(self, request, workoutname):
+        if workoutname:
+            print(workoutname)
+            found_user_workout = Workout.objects.get(name=workoutname)
+            context = {"found_user_workout":found_user_workout}
+            return render(request, 'profile/myworkoutinfo.html', context)
+
+    def post(self, request, workoutname):
+        found_user_workout = Workout.objects.get(name=workoutname)
+        found_user_workout.delete()
+        return HttpResponseRedirect('/profile/')
+
+
+
+
+
+
+
+
 
 
 class Entries(View):
     def get(self, request):
+        user_workouts = Workout.objects.filter(author_id=request.user.id)
+
+        
+        # context = {"user_workouts":user_workouts}
         usersID = request.user 
         userProfile = Profile.objects.get(user_id=usersID.id)
-
         user_entries = Entry.objects.filter(author_id=usersID.id)
-
+        
         paginator = Paginator(user_entries, 16)
         page = request.GET.get('pg')
         user_entries = paginator.get_page(page)
@@ -139,6 +183,8 @@ class EntryDelete(DeleteView):
 
 class Tracker_Page(View):
     def get(self, request):
-        all_entries = Entry.objects.all()
-        context = {"all_entries":all_entries}
+        usersID = request.user 
+        user_entries = Entry.objects.filter(author_id=usersID.id)
+        context = {"user_entries":user_entries}
         return render(request, 'tracker.html', context)
+
