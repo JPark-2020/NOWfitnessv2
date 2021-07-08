@@ -48,13 +48,13 @@
                 WORKOUTS
             </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="">Workouts Index</a></li>
+                    <li><a class="dropdown-item" href="{%url "workouts-page"%}">Workouts Index</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="">Bodyweight</a></li>
+                    <li><a class="dropdown-item" href="{%url "workouts-page"%}bodyweight">Bodyweight</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="">Boxing</a></li>
+                    <li><a class="dropdown-item" href="{%url "workouts-page"%}boxing">Boxing</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="">Yoga</a></li>
+                    <li><a class="dropdown-item" href="{%url "workouts-page"%}yoga">Yoga</a></li>
                 </ul>
             </li>
              <li class="nav-item">
@@ -84,7 +84,7 @@
             </button>
             <button type="button" class="btn">
             <li class="nav-item">
-              <a class="nav-link active" href="">WORKOUTS</a>
+              <a class="nav-link active" href="{%url 'workouts-page'%}">WORKOUTS</a>
             </li>
             </button>
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">

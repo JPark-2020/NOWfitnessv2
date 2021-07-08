@@ -1,0 +1,29 @@
+{%extends "base.html" %} 
+
+{%load static%}
+
+
+{%block title%}
+    NOW | {{type}}
+{%endblock%}
+
+{%block js_files%}
+{%endblock%}
+
+
+{%block content%}
+<h1>{{workout}} Workout</h1>
+
+<h2>Exercises in this plan:</h2>
+{%for exercise in exercises%}
+<ul>
+    <li>{{exercise.name}}</li>
+</ul>
+{%endfor%}
+
+
+{%include workoutHTML%}
+
+{%endblock%}
+
+

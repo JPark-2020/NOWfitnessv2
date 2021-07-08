@@ -18,6 +18,7 @@ class Exercise(Model):
     name = models.CharField(max_length=50) 
     image = models.CharField(max_length=5000) 
     description = models.TextField() 
+    category = models.CharField(max_length=15, null=True)
 
     def __str__(self):
         return self.name 
@@ -30,6 +31,7 @@ class Workout(Model):
     name = models.CharField(max_length=40)
     description = models.TextField()
     exercises = ManyToManyField(Exercise, blank=True)
+    admin_created = models.BooleanField(null=True, default=False)
 
     def __str__(self):
         return self.name 

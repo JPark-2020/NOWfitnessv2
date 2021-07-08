@@ -1,0 +1,35 @@
+{%extends "base.html" %}
+{%load static%}
+
+{%block title%} NOW | WORKOUTS {%endblock%}
+
+{%block content%}
+<div class="premade-header">
+    <h1 class="premade-header-header">Available Workouts</h1>
+</div>
+
+<div class="premade-workout">
+
+    {%for workout in admin_workouts%}
+
+    <div class="premade-workout-info">
+        {%if workout.name == 'Boxing'%}
+            <img src="{%static 'images/boxinglanding.jpeg'%}"/>
+        {%elif workout.name == 'Yoga'%}
+            <img src="{%static 'images/yogalanding.jpeg'%}"/>
+        {%else%}
+            <img src="{%static 'images/bodyweightlanding.jpeg'%}"/>
+        {%endif%}
+        <div class="premade-workout-info2">
+            <h2>{{workout.name}}</h2>
+            <br>
+            <p>{{workout.description}}</p>
+        </div>
+    </div>
+
+    {%endfor%}
+</div>
+
+
+
+{%endblock%}
