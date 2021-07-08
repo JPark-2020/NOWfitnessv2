@@ -14,11 +14,17 @@
 
     <div class="premade-workout-info">
         {%if workout.name == 'Boxing'%}
-            <img src="{%static 'images/boxinglanding.jpeg'%}"/>
+            <a href="{%url 'workouts-page'%}boxing">
+                <img src="{%static 'images/boxinglanding.jpeg'%}"/>
+            </a>
         {%elif workout.name == 'Yoga'%}
-            <img src="{%static 'images/yogalanding.jpeg'%}"/>
+            <a href="{%url 'workouts-page'%}yoga">
+                <img src="{%static 'images/yogalanding.jpeg'%}"/>
+            </a>
         {%else%}
-            <img src="{%static 'images/bodyweightlanding.jpeg'%}"/>
+            <a href="{%url 'workouts-page'%}bodyweight">
+                <img src="{%static 'images/bodyweightlanding.jpeg'%}"/>
+            </a>
         {%endif%}
         <div class="premade-workout-info2">
             <h2><a href="{%url 'workouts-page'%}{{workout.name.lower}}">{{workout.name}}</a></h2>

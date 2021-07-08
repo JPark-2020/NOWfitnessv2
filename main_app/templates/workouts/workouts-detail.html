@@ -14,15 +14,22 @@
 {%block content%}
 
 {%include workoutHTML%}
+<h2 class="workout-detail-header">EXERCISES IN THIS WORKOUT</h2>
 
-<h2>EXERCISE INFO</h2>
-{%for exercise in exercises%}
-<div class="">
-    <h2>{{exercise.name}}</h2>
-    <img src="{{exercise.image}}"/>
-    <p>{{exercise.description}}</p>
+<div class="workout-detail-grid">
+    {%for exercise in exercises%}
+    <div class="workout-detail-content">
+        <img class="workout-detail-image" src="{{exercise.image}}"/>
+        <div class="workout-content">
+            <h2 class="workout-detail-exercise">{{exercise.name}}</h2>
+            <hr>
+            <p class="workout-detail-information">{{exercise.description}}</p>    
+        </div>
+    </div>
+    {%endfor%}
+
 </div>
-{%endfor%}
+
 
 
 

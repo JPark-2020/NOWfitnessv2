@@ -5,6 +5,7 @@
   
 body {
     font-family: 'Raleway', sans-serif;
+    background-color: rgb(221,223,225);
 }
 
 .nav-link:hover{
@@ -152,12 +153,25 @@ footer ul li a:hover{
     padding: 25px;
 }
 .premade-workout-info2 h2{
-    font-size: 30px;
+    font-size: 32px;
     font-weight:bolder;
 }
 
 .premade-workout-info p{
     font-size: 24px; 
+}
+
+.premade-workout-info2 h2 a{
+    text-decoration:none; 
+    color: gray;
+}
+
+.premade-workout-info2 h2 a:hover{
+    color: green;
+}
+
+.premade-workout-info:hover{
+    transform:scale(1.05);
 }
 
 /* WorkoutHTML */
@@ -178,6 +192,8 @@ footer ul li a:hover{
     height: 900px;
     width:640px;
     width: 100%;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius:5%;
 }
 
 .workout-informative-info{
@@ -190,6 +206,8 @@ footer ul li a:hover{
     justify-content: center; 
     align-items: center; 
     min-width: 574px;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius:5%;
 }
 
 .workout-informative-info2{
@@ -202,6 +220,8 @@ footer ul li a:hover{
     justify-content: center; 
     align-items: center; 
     min-width: 574px;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius:5%;
 }
 
 .informative-header {
@@ -232,3 +252,46 @@ footer ul li a:hover{
 }
 
 /* Workouts Detail */
+
+.workout-detail-grid{
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:repeat(auto-fit, minmax(350px, 1fr)); 
+    column-gap: 30px;
+    row-gap: 100px;
+}
+
+.workout-detail-content{
+    margin:auto;
+    text-align: center;
+}
+
+.workout-content{
+    width: 500px;
+    font-size: 24px;
+    text-align: center; 
+    box-shadow: 0 0 5px #bbb;
+    padding: 50px;
+    border-bottom-right-radius: 12%;
+    border-bottom-left-radius:12%;
+}
+
+.workout-detail-image{
+    border-radius: 4px 4px 0 0;
+    width: 500px;
+    height: 450px;
+    box-shadow: 0 0 5px #bbb;
+    border-top-left-radius: 12%;
+    border-top-right-radius:12%;
+}
+
+.workout-detail-content:hover{
+    transform: scale(1.1);
+}
+.workout-detail-header{
+    text-align: center; 
+    margin-top: 80px;
+    margin-bottom: 65px; 
+    font-weight:bold;  
+    font-size: 30px; 
+}
