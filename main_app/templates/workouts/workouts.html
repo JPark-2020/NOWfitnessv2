@@ -21,7 +21,7 @@
             <img src="{%static 'images/bodyweightlanding.jpeg'%}"/>
         {%endif%}
         <div class="premade-workout-info2">
-            <h2>{{workout.name}}</h2>
+            <h2><a href="{%url 'workouts-page'%}{{workout.name.lower}}">{{workout.name}}</a></h2>
             <br>
             <p>{{workout.description}}</p>
         </div>

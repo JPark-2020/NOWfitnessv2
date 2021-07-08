@@ -12,17 +12,20 @@
 
 
 {%block content%}
-<h1>{{workout}} Workout</h1>
 
-<h2>Exercises in this plan:</h2>
+{%include workoutHTML%}
+
+<h2>EXERCISE INFO</h2>
 {%for exercise in exercises%}
-<ul>
-    <li>{{exercise.name}}</li>
-</ul>
+<div class="">
+    <h2>{{exercise.name}}</h2>
+    <img src="{{exercise.image}}"/>
+    <p>{{exercise.description}}</p>
+</div>
 {%endfor%}
 
 
-{%include workoutHTML%}
+
 
 {%endblock%}
 

@@ -159,3 +159,76 @@ footer ul li a:hover{
 .premade-workout-info p{
     font-size: 24px; 
 }
+
+/* WorkoutHTML */
+
+.workout-informative{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 60px; 
+    min-width: 1146px;
+}
+
+.workout-informative-image{
+    display: inline-block; 
+    min-width: 574px;
+}
+
+.workout-informative-image img{
+    height: 900px;
+    width:640px;
+    width: 100%;
+}
+
+.workout-informative-info{
+    display: inline-block; 
+    background-color: rgb(15,30,60);
+    color: white; 
+    width: 100%;
+    height: 100%;
+    text-align: center; 
+    justify-content: center; 
+    align-items: center; 
+    min-width: 574px;
+}
+
+.workout-informative-info2{
+    display: inline-block; 
+    background-color: rgb(215,60,75);
+    color: white; 
+    width: 100%;
+    height: 100%;
+    text-align: center; 
+    justify-content: center; 
+    align-items: center; 
+    min-width: 574px;
+}
+
+.informative-header {
+    margin-top: 20vh;
+}
+
+.workout-informative-info p{
+    margin-top: 30px; 
+    display:inline-block; 
+}
+
+.workout-informative-info2 p{
+    margin-top: 30px; 
+    display:inline-block; 
+}
+
+.round-number{
+    background-color: white; 
+    padding: 20px; 
+    color: black; 
+    font-size: 30px; 
+    border-radius: 15%;
+}
+
+.round {
+    margin-left: 30px; 
+    font-size: 40px; 
+}
+
+/* Workouts Detail */
