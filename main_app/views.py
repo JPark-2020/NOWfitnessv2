@@ -91,3 +91,54 @@ class Profiles(View):
             return HttpResponseRedirect('/profile/')
 
         return render(request, 'profile.html', context)
+
+
+class Entries(View):
+    def get(self, request):
+        usersID = request.user 
+        userProfile = Profile.objects.get(user_id=usersID.id)
+
+        user_entries = Entry.objects.filter(author_id=usersID.id)
+
+        paginator = Paginator(user_entries, 16)
+        page = request.GET.get('pg')
+        user_entries = paginator.get_page(page)
+
+        context = {"user_entries":user_entries, "userProfile":userProfile}
+        return render(request, 'entries/entries.html', context)
+
+class EntryCreate(CreateView):
+    model = Entry 
+    fields = ['entry_exercise','set_one', 'set_two', 'set_three', 'set_four', 'set_five', 'tracker']
+    template_name = "entries/entry-create.html"
+    
+    def get_success_url(self):
+        return reverse('entry-detail', kwargs={'pk': self.object.pk})
+
+
+class EntryDetail(DetailView):
+    model = Entry 
+    template_name = "entries/entry-detail.html"
+
+
+class EntryUpdate(UpdateView):
+    model = Entry 
+    fields = ['entry_exercise','set_one', 'set_two', 'set_three', 'set_four', 'set_five', 'tracker']
+    template_name = "entries/entry-update.html"
+
+    def get_success_url(self):
+        return reverse('entry-detail', kwargs={'pk': self.object.pk})
+
+class EntryDelete(DeleteView):
+    model = Entry 
+    template_name = "entries/entry-delete.html"
+    
+    def get_success_url(self):
+        return reverse('entries-page')
+
+
+class Tracker_Page(View):
+    def get(self, request):
+        all_entries = Entry.objects.all()
+        context = {"all_entries":all_entries}
+        return render(request, 'tracker.html', context)

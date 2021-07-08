@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{%load static%}
+
+
+{% block content %}
+{% comment %} Fake Date {% endcomment %}
+<h1>{{entry.tracker.date_custom}} - {{entry.entry_exercise}}</h1>
+{% comment %} Real Date {% endcomment %}
+<h2>{{entry.tracker.date_creation}} - {{entry.entry_exercise}}</h2>
+<h2>Sets/Reps</h2>
+<ul>
+    <li><strong>Set 1:</strong>{{entry.set_one}} reps</li>
+    <li><strong>Set 2:</strong>{{entry.set_two}} reps</li>
+    <li><strong>Set 3:</strong>{{entry.set_three}} reps</li>
+    <li><strong>Set 4:</strong>{{entry.set_four}} reps</li>
+    <li><strong>Set 5:</strong>{{entry.set_five}} reps</li>
+</ul>
+
+
+<br><br>
+<div id="updateDelete">
+    <button id="updateButton" ><a href="{% url 'entry-update' entry.pk %}">Update Entry</a></button>
+    <button id="deleteButton"><a href="{% url 'entry-delete' entry.pk %}" class="button is-danger">Delete Entry</a></button>
+ </div>
+{% endblock %}
+
+

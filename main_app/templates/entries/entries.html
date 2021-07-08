@@ -1,0 +1,43 @@
+{%extends 'base.html' %}
+{%load static%}
+
+
+{%block title%}NOW! - Entry Log{%endblock%}
+{%block content%}
+<div class="card">
+    <img src="{{userProfile.image.url}}" height="200px" width="300px"/>
+    <h1>{{user.username}}</h1>
+    <p><b>Age:</b>{{userProfile.age}}</p>
+    <p><b>Weight:</b>{{userProfile.weight_lbs}}</p>
+    <p><b>Account Created:</b><br>{{userProfile.created_at}}</p>
+</div>
+
+<h2 class="log-header">Entry Log</h2>
+<div class="entrysheet">
+    {%for entry in user_entries%}
+    <ul>
+        <a href="{%url 'entry-detail' entry.pk%}"><li class="entryworkoutdate">{{entry.tracker.date_custom}}</li></a>
+        <p class="entryworkout">{{entry.entry_exercise}}</p>
+    </ul>
+    {%endfor%}
+</div>
+
+<button type="button"><a href="{% url 'entry-create' %}">Add Entry</a></button>
+<div>
+    <nav aria-label="Page Nav">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="?pg=1"><<</a></li>
+        {%if all_entries.has_previous%}
+            <li class="page-item"><a class="page-link" href="?pg={{all_entries.previous_page_number}}">{{all_entries.previous_page_number}}</a></li>
+        {%endif%}
+            <li class="page-item"><a class="page-link" href="?pg={{all_entries.number}}">{{all_entries.number}}</a></li>
+        {%if all_entries.has_next%}
+            <li class="page-item"><a class="page-link" href="?pg={{all_entries.next_page_number}}">{{all_entries.next_page_number}}</a></li>
+        {%endif%}
+            <li class="page-item"><a class="page-link" href="?pg={{all_entries.paginator.num_pages}}">>></a></li>
+        </ul>
+    </nav>
+</div>  
+
+{%endblock%}
+

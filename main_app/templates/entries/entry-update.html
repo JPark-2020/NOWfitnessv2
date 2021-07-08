@@ -1,0 +1,12 @@
+{% extends 'base.html' %} 
+{%load static%}
+
+
+{% block content %}
+<h1>Update {{entry.tracker.custom_date}}-{{entry.entry_exercise}}
+
+<form action="" method="post">
+  {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
