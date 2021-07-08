@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View  
 from django.views.generic.base import TemplateView 
 from django.contrib.auth import login
@@ -88,6 +88,6 @@ class Profiles(View):
             user_profile.image = request.FILES["user_image"]
             user_profile.save()
             
-            return redirect(request, 'profile.html')
+            return HttpResponseRedirect('/profile/')
 
         return render(request, 'profile.html', context)
