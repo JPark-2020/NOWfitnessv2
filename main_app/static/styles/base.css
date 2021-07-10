@@ -314,3 +314,8 @@ footer ul li a:hover{
     height:300px; 
 }
 
+/* Tracker */
+
+.setcompletion{
+    visibility:hidden;
+}

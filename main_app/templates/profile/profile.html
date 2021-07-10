@@ -23,21 +23,5 @@
     <button>Upload!</button>
 </form>
 
-<form method="POST">
-    {%csrf_token%}
-    {{form2}}
-    <button>Create</button>
-</form>
-
-
-
-
-<div>
-    <h2>My Workouts</h2>
-    {%for workout in user_workouts%}
-        <h2><a href="{%url 'myworkout' workout.name%}">{{workout.name}}</a></h2>
-    {%endfor%}
-</div>
-
 
 {%endblock%}

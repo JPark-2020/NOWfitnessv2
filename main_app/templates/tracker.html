@@ -8,29 +8,36 @@
 {%block title%}NOW! - Tracker{%endblock%}
 
 {%block content%}
+
 <div id="filters">
   <input type="text" id="dateQuery" onkeyup="dateFunction()" placeholder="Search by Date..">
-  <input type="text" id="exerciseQuery" onkeyup="exerciseFunction()" placeholder="Search by Exercise..">
+  <input type="text" id="exerciseQuery" onkeyup="exerciseFunction()" onkeyup placeholder="Search by Workout..">
+  <button type="button" id="getData">View Data</button>
 </div>
+
 <table id="entryTable">
   <tr class="table_header">
     <th>Entry Date</th>
-    <th>Exercise</th>
-    <th>set1</th>
-    <th>set2</th>
-    <th>set3</th>
-    <th>set4</th>
-    <th>set5</th>
+    <th>Workout</th>
+    <th>Set 1</th>
+    <th>Set 2</th>
+    <th>Set 3</th>
+    <th>Set 4</th>
+    <th>Set 5</th>
+    <th>Sets Complete</th>
+    <th>Improvement Made</th>
   </tr>
 {%for entry in user_entries%}
   <tr>
-    <td>{{entry.tracker.date_custom}}</td>
-    <td>{{entry.exercise}}</td>
-    <td>{{entry.set_one}}</td>
-    <td>{{entry.set_two}}</td>
-    <td>{{entry.set_three}}</td>
-    <td>{{entry.set_four}}</td>
-    <td>{{entry.set_five}}</td>
+    <td>{{entry.date_custom}}</td>
+    <td>{{entry.entry_workout}}</td>
+    <td class="setcompletion setCompletion1">{{entry.set1}}</td>
+    <td class="setcompletion setCompletion2">{{entry.set2}}</td>
+    <td class="setcompletion setCompletion3">{{entry.set3}}</td>
+    <td class="setcompletion setCompletion4">{{entry.set4}}</td>
+    <td class="setcompletion setCompletion5">{{entry.set5}}</td>
+    <td class="sets-complete"></td>
+    <td class="improvement-check"></td>
   </tr>
 {%endfor%}
 </table>

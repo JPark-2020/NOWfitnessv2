@@ -5,12 +5,47 @@
 {%block title%}NOW! - Entry Log{%endblock%}
 {%block content%}
 
+<h2>{{user_profile.user.username}}</h2>
+
+{%if user_profile.image%}
+<img class="profileimage" src="{{user_profile.image.url}}">
+{%else%}
+<img class="profileimage" src="{%static 'images/avatar.png'%}">
+{%endif%}
+
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Update Photo
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select a Photo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form}}
+            <hr>
+              <button type="submit" class="btn btn-primary">Upload!</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <h2 class="log-header">Entry Log</h2>
 <div class="entrysheet">
     {%for entry in user_entries%}
     <ul>
-        <a href="{%url 'entry-detail' entry.pk%}"><li class="entryworkoutdate">{{entry.tracker.date_custom}}</li></a>
+        <a href="{%url 'entry-detail' entry.pk%}"><li class="entryworkoutdate">{{entry.date_custom}} - {{entry.entry_workout.name}}</li></a>
         <p class="entryworkout">{{entry.entry_exercise}}</p>
     </ul>
     {%endfor%}
@@ -32,6 +67,6 @@
         </ul>
     </nav>
 </div>  
-
 {%endblock%}
+
 

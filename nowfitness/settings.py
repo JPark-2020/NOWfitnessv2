@@ -129,7 +129,7 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 MEDIA_URL = "/user-media/"
 
 
-DATETIME_FORMAT = '%m/%d/%y' 
+DATE_FORMAT = '%m/%d/%y' 
 
-LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_REDIRECT_URL = '/entries/'
 LOGOUT_REDIRECT_URL = '/'

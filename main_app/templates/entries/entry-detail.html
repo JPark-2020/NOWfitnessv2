@@ -3,18 +3,20 @@
 
 
 {% block content %}
-{% comment %} Fake Date {% endcomment %}
-<h1>{{entry.tracker.date_custom}} - {{entry.entry_exercise}}</h1>
-{% comment %} Real Date {% endcomment %}
-<h2>{{entry.tracker.date_creation}} - {{entry.entry_exercise}}</h2>
-<h2>Sets/Reps</h2>
-<ul>
-    <li><strong>Set 1:</strong>{{entry.set_one}} reps</li>
-    <li><strong>Set 2:</strong>{{entry.set_two}} reps</li>
-    <li><strong>Set 3:</strong>{{entry.set_three}} reps</li>
-    <li><strong>Set 4:</strong>{{entry.set_four}} reps</li>
-    <li><strong>Set 5:</strong>{{entry.set_five}} reps</li>
-</ul>
+<h1>{{entry.entry_workout}}</h1>
+<h2>Real Date:{{entry.date_creation}}</h2>
+<h2>Fake Date:{{entry.date_custom}}</h2>
+<p>Notes: {{entry.notes}}</p>
+
+<h3>Sets Completed</h3>
+<div>
+    <h4>Set One:&nbsp;{{entry.set1}}</h4>
+    <h4>Set Two:&nbsp;{{entry.set2}}</h4>
+    <h4>Set Three:&nbsp;{{entry.set3}}</h4>
+    <h4>Set Four:&nbsp;{{entry.set4}}</h4>
+    <h4>Set Five:&nbsp;{{entry.set5}}</h4>
+</div>
+
 
 
 <br><br>

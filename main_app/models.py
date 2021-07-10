@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Model
 from django.contrib.auth.models import User
-from django.db.models.fields.related import ManyToManyField 
+
 
 
 #1 Profile has 1 user 
@@ -13,13 +13,23 @@ class Profile(Model):
     def __str__(self):
         return self.user.username 
 
-#A Exercise has one creator. A creator can make many exercises. 
+class Workout(Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    
+
+    def __str__(self):
+        return self.name 
+
+    class Meta:
+        ordering = ['name']
+
+#A exercise has one workout. A workout has many exercises 
 class Exercise(Model):
     name = models.CharField(max_length=50) 
     image = models.CharField(max_length=5000) 
     description = models.TextField() 
-    category = models.CharField(max_length=40, null=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    related_workout = models.ForeignKey(Workout, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.name 
@@ -27,39 +37,17 @@ class Exercise(Model):
     class Meta:
         ordering = ['name']
 
-#Many Workouts have many exercises. Many Exercises have many workouts. 
-class Workout(Model):
-    name = models.CharField(max_length=40)
-    description = models.TextField()
-    exercises = ManyToManyField(Exercise, blank=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    custom_exercise_one = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_two = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_three = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_four = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_five = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_six = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_seven = models.CharField(max_length=40, blank=True, null=True)
-    custom_exercise_eight = models.CharField(max_length=40, blank=True, null=True)
-    admin_created = models.BooleanField(null=True, default=False)
 
-    def __str__(self):
-        return self.name 
 
-    class Meta:
-        ordering = ['name']
 
-#One Tracker has One User 
-#One Tracker has one workout, One workout has many trackers 
 
 class Tracker(Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    tracked_workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
-    date_custom = models.DateTimeField(null=True, blank=True)
-    date_creation = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_custom = models.DateField(null=True, blank=True)
+    date_creation = models.DateField(auto_now_add=True)
     
     def __str__(self):
-        return f'{self.user.username}: {self.date_custom} - {self.tracked_workout}'
+        return f'{self.date_custom} - {self.date_creation}'
 
     class Meta:
         ordering = ['date_custom']
@@ -69,20 +57,33 @@ class Tracker(Model):
 #One entry has one tracker. One tracker has many entries 
 
 class Entry(Model):
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    entry_exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
-    tracker = models.ForeignKey(Tracker, on_delete=models.CASCADE)
-    date_custom = models.DateTimeField(null=True, blank=True)
-    date_creation = models.DateTimeField(auto_now_add=True)
-    set_one = models.CharField(max_length=2, default=0, null=True, blank=True)
-    set_two = models.CharField(max_length=2, default=0, null=True, blank=True)
-    set_three = models.CharField(max_length=2, default=0, null=True, blank=True)
-    set_four = models.CharField(max_length=2, default=0, null=True, blank=True)
-    set_five = models.CharField(max_length=2, default=0, null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    entry_workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
+    date_custom = models.DateField(null=True, blank=True)
+    date_creation = models.DateField(auto_now_add=True)
+    set1 = models.BooleanField(default=False)
+    set2 = models.BooleanField(default=False)
+    set3 = models.BooleanField(default=False)
+    set4 = models.BooleanField(default=False)
+    set5 = models.BooleanField(default=False)
+    notes = models.TextField(blank=True, null=True)
+    
 
     def __str__(self):
-        return f'{self.author}: {self.date_custom} - {self.tracker}'
+        return f'{self.author}: {self.date_custom}'
 
     class Meta:
         ordering = ['date_custom']
+
+
+
+
+
+
+
+
+
+
+
+
 
