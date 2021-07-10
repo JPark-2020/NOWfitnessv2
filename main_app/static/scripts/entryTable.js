@@ -78,31 +78,33 @@ function countCompleteSets(entry){
   }
 }
 
+// unecessary
 
-function checkImprovement(entry){
-  let firstEntryImprovement = entry[1].getElementsByTagName("td")[8]
-  firstEntryImprovement.innerHTML = 'none';
+// function checkImprovement(entry){
+//   let firstEntryImprovement = entry[1].getElementsByTagName("td")[8]
+//   let workoutName = entry[i].getElementsByTagName("td")[1]
+//   // firstEntryImprovement.innerHTML = 'none';
 
-  for(let i=2; i < entry.length; i++){
-    let baseEntry = entry[i].getElementsByTagName("td")[7];
-    let priorEntry = entry[i-1].getElementsByTagName("td")[7];
-    let improvement = entry[i].getElementsByTagName("td")[8];
+//   for(let i=2; i < entry.length; i++){
+//     let baseEntry = entry[i].getElementsByTagName("td")[7];
+//     let priorEntry = entry[i-1].getElementsByTagName("td")[7];
+//     let improvement = entry[i].getElementsByTagName("td")[8];
 
 
-    if(baseEntry.innerHTML > priorEntry.innerHTML && priorEntry.innerHTML != 0){
-      percentage_improve = (baseEntry.innerHTML-priorEntry.innerHTML)/priorEntry.innerHTML;
-      improvement.innerHTML = percentage_improve * 100 + '%';
-    }
+//     if(baseEntry.innerHTML > priorEntry.innerHTML && priorEntry.innerHTML != 0){
+//       percentage_improve = (baseEntry.innerHTML-priorEntry.innerHTML)/priorEntry.innerHTML;
+//       improvement.innerHTML = percentage_improve * 100 + '%';
+//     }
 
-    else if(priorEntry.innerHTML == 0){
-      percentage_improve = (baseEntry.innerHTML-priorEntry.innerHTML/1);
-      improvement.innerHTML = percentage_improve * 100 + '%';
-    }
-    else{
-      improvement.innerHTML = 'NO';
-    }
-}
-}
+//     else if(priorEntry.innerHTML == 0){
+//       percentage_improve = (baseEntry.innerHTML-priorEntry.innerHTML/1);
+//       improvement.innerHTML = percentage_improve * 100 + '%';
+//     }
+//     else{
+//       improvement.innerHTML = 'NO';
+//     }
+// }
+// }
 document.getElementById("getData").addEventListener("click", function(){
   let set1 = document.getElementsByClassName("setCompletion1");
   let set2 = document.getElementsByClassName("setCompletion2");

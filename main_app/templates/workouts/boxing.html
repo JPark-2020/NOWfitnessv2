@@ -1,5 +1,10 @@
 {%load static%}
+
 {%block content%}
+
+{%block js_files%}
+<script defer src={%static 'scripts/boxingModal.js'%}></script>
+{%endblock%}
 
 <div class="workout-informative">
     
@@ -16,5 +21,36 @@
     </div>
 
 </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#boxingModal">
+  Start Workout
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="boxingModal" tabindex="-1" aria-labelledby="boxingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="boxingModalLabel">Boxing - Round One</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="welcomeText">Practice your 4 punch combos. Ready to go? Click start!</p>
+        <p class="timer"></p>
+        <p class="punch1">Jab</p>
+        <p class="punch2">Jab</p>
+        <p class="punch3">Cross</p>
+        <p class="punch4">Lead Hook</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary startTimer">Start</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 {%endblock%}
