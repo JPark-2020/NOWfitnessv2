@@ -5,34 +5,38 @@
 {%block title%}NOW! - Entry Log{%endblock%}
 {%block content%}
 
-<h2>{{user_profile.user.username}}</h2>
+<br>
+<br>
+<div class="entry_profile">
+  <h2>{{user_profile.user.username}}</h2>
 
-{%if user_profile.image%}
-<img class="profileimage" src="{{user_profile.image.url}}">
-{%else%}
-<img class="profileimage" src="{%static 'images/avatar.png'%}">
-{%endif%}
+  {%if user_profile.image%}
+  <img class="profileimage" src="{{user_profile.image.url}}">
+  {%else%}
+  <img class="profileimage" src="{%static 'images/avatar.png'%}">
+  {%endif%}
 
-
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Update Photo
-</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Select a Photo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" enctype="multipart/form-data">
-            {%csrf_token%}
-            {{form}}
-            <hr>
-              <button type="submit" class="btn btn-primary">Upload!</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </form>
+  <br>
+  <br>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Update Photo
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select a Photo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" enctype="multipart/form-data">
+              {%csrf_token%}
+              {{form}}
+              <hr>
+                <button type="submit" class="btn btn-primary">Upload!</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -51,19 +55,20 @@
     {%endfor%}
 </div>
 
-<button type="button"><a href="{% url 'entry-create' %}">Add Entry</a></button>
+<button class="entry_create" type="button"><a href="{% url 'entry-create' %}">Add Entry</a></button>
+
 <div>
     <nav aria-label="Page Nav">
         <ul class="pagination justify-content-center">
             <li class="page-item"><a class="page-link" href="?pg=1"><<</a></li>
         {%if all_entries.has_previous%}
-            <li class="page-item"><a class="page-link" href="?pg={{all_entries.previous_page_number}}">{{all_entries.previous_page_number}}</a></li>
+            <li class="page-item"><a class="page-link" href="?pg={{user_entries.previous_page_number}}">{{user_entries.previous_page_number}}</a></li>
         {%endif%}
-            <li class="page-item"><a class="page-link" href="?pg={{all_entries.number}}">{{all_entries.number}}</a></li>
+            <li class="page-item"><a class="page-link" href="?pg={{user_entries.number}}">{{user_entries.number}}</a></li>
         {%if all_entries.has_next%}
-            <li class="page-item"><a class="page-link" href="?pg={{all_entries.next_page_number}}">{{all_entries.next_page_number}}</a></li>
+            <li class="page-item"><a class="page-link" href="?pg={{user_entries.next_page_number}}">{{user_entries.next_page_number}}</a></li>
         {%endif%}
-            <li class="page-item"><a class="page-link" href="?pg={{all_entries.paginator.num_pages}}">>></a></li>
+            <li class="page-item"><a class="page-link" href="?pg={{user_entries.paginator.num_pages}}">>></a></li>
         </ul>
     </nav>
 </div>  

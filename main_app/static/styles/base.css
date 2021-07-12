@@ -314,8 +314,79 @@ footer ul li a:hover{
     height:300px; 
 }
 
+.entry_profile{
+    text-align: center; 
+}
+
+.entry_create{
+    margin-left: 40px; 
+}
+
+.entry_create a{
+    text-decoration: none; 
+}
+
+button a{
+    text-decoration: none; 
+}
 /* Tracker */
 
 .setcompletion{
     visibility:hidden;
+}
+
+.start-button{
+    margin-left: 46vw;
+    margin-right: 45vw; 
+}
+
+/* TRACKER */
+
+.tracker-whitespace{
+    padding: 50px; 
+    background-color: rgb(221,223,225);
+}
+
+#filters{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". . . datesearch exercisesearch searchButton . . ";
+}
+
+.div1{
+    grid-area: datesearch;
+}
+
+.div2{
+    grid-area: exercisesearch;
+}
+
+.div3{
+    grid-area: searchButton;
+}
+
+#entryTable {
+    margin-left: 5vw; 
+    margin-top: 4vh; 
+    margin-right: 5vw; 
+    margin-bottom: 6vh; 
+}
+
+.table_header{
+    background-color: red; 
+    width: 60vw; 
+}
+
+.table_header th{
+    border: 2px solid black; 
+    padding: 4vw; 
+}
+
+.table_data td{
+    border: 2px solid black;
+    padding: 30px; 
+    background-color: white; 
+    text-align: center; 
+    color: blue; 
+    
 }

@@ -1,4 +1,8 @@
 {%load static%}
+
+{%block js_files%}
+<script defer src={%static 'scripts/bodyweightModal.js'%}></script>
+{%endblock%}
 {%block content%}
 <div class="workout-informative">
     
@@ -14,6 +18,32 @@
         <p class="round">SETS</p>
     </div>
 
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary start-button" data-bs-toggle="modal" data-bs-target="#bodyModal">
+  Start Workout
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="bodyModal" tabindex="-1" aria-labelledby="bodyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="boxingModalLabel">Bodyweight</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="welcomeText">Follow along with these Bodyweight Exercises.</p>
+        <p class="timer"></p>
+        <p class="exercise1"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary startTimer">Start</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {%endblock%}
