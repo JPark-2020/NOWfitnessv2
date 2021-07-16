@@ -37,10 +37,6 @@ class Exercise(Model):
     class Meta:
         ordering = ['name']
 
-
-
-
-
 class Tracker(Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_custom = models.DateField(null=True, blank=True)
