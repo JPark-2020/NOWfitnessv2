@@ -1,15 +1,22 @@
-{% extends 'base.html' %} 
-{%load static%}
-
-
-{% block content %}
-<h1 class="title">Are you sure you want to delete {{entry.tracker.date_custom}}-{{entry.entry_exercise}}?</h1>
-<form method="post">
-  {% csrf_token %}
-  <div class="buttons">
-   <!-- confirm artist delete -->
-    <input id="confirmbutton" class="button is-danger" type="submit" value="Confirm" />
-    <button><a id="cancelbutton" href="{% url 'entry-detail' entry.pk %}">Cancel</a></button>
-  </div>
-</form>
+{% extends 'base.html' %} {%load static%} {% block content %}
+<div class="entry-delete-page">
+  <h1 class="title">
+    Are you sure you want to delete {{entry.entry_workout}}
+    {{entry.date_custom}}
+  </h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="buttons">
+      <input
+        id="confirmbutton"
+        class="button is-danger"
+        type="submit"
+        value="Confirm"
+      />
+      <button>
+        <a id="cancelbutton" href="{% url 'entry-detail' entry.pk %}">Cancel</a>
+      </button>
+    </div>
+  </form>
+</div>
 {% endblock %}

@@ -1,12 +1,9 @@
-{% extends 'base.html' %} 
-{%load static%}
+{% extends 'base.html' %} {%load static%} {% block content %}
+<div class="entry-update-page">
+  <h1>Update: {{entry.entry_workout}} {{entry.date_custom}}</h1>
 
-
-{% block content %}
-<h1>Update {{entry.tracker.custom_date}}-{{entry.entry_exercise}}
-
-<form action="" method="post">
-  {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
-</form>
-
+  <form action="" method="post">
+    {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+  </form>
+</div>
 {% endblock %}

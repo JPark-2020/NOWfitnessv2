@@ -47,7 +47,7 @@ video {
 }
 
 .home-grid-header h2:nth-child(1){
-    color: red;
+    color: rgb(53, 53, 155);
     font-size: 34px;
 }
 
@@ -373,7 +373,7 @@ button a{
 }
 
 .table_header{
-    background-color: red; 
+    background-color: yellow; 
     width: 60vw; 
 }
 
@@ -390,3 +390,14 @@ button a{
     color: blue; 
     
 }
+
+
+.entry-detail-page,
+.entry-update-page,
+.entry-delete-page,
+.entry-create-page{
+    text-align: center;
+    margin-top: 30px;  
+}
+
+

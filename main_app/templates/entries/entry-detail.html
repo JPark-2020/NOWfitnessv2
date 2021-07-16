@@ -1,29 +1,30 @@
-{% extends 'base.html' %} 
-{%load static%}
+{% extends 'base.html' %} {%load static%} {% block content %}
+<div class="entry-detail-page">
+  <h1>{{entry.entry_workout}}</h1>
+  <br>
+  <h2>Real Date:{{entry.date_creation}}</h2>
+  <h2>Fake Date:{{entry.date_custom}}</h2>
+  <p>Notes: {{entry.notes}}</p>
 
-
-{% block content %}
-<h1>{{entry.entry_workout}}</h1>
-<h2>Real Date:{{entry.date_creation}}</h2>
-<h2>Fake Date:{{entry.date_custom}}</h2>
-<p>Notes: {{entry.notes}}</p>
-
-<h3>Sets Completed</h3>
-<div>
+  <h3>Sets Completed</h3>
+  <div>
     <h4>Set One:&nbsp;{{entry.set1}}</h4>
     <h4>Set Two:&nbsp;{{entry.set2}}</h4>
     <h4>Set Three:&nbsp;{{entry.set3}}</h4>
     <h4>Set Four:&nbsp;{{entry.set4}}</h4>
     <h4>Set Five:&nbsp;{{entry.set5}}</h4>
+  </div>
+
+  <br /><br />
+  <div id="updateDelete">
+    <button id="updateButton">
+      <a href="{% url 'entry-update' entry.pk %}">Update Entry</a>
+    </button>
+    <button id="deleteButton">
+      <a href="{% url 'entry-delete' entry.pk %}" class="button is-danger"
+        >Delete Entry</a
+      >
+    </button>
+  </div>
 </div>
-
-
-
-<br><br>
-<div id="updateDelete">
-    <button id="updateButton" ><a href="{% url 'entry-update' entry.pk %}">Update Entry</a></button>
-    <button id="deleteButton"><a href="{% url 'entry-delete' entry.pk %}" class="button is-danger">Delete Entry</a></button>
- </div>
 {% endblock %}
-
-
