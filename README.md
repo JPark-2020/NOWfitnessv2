@@ -24,12 +24,21 @@ TRACKER:
 
 
 Screenshots:
+#Home
 
 ![HOME](assets/images/web1.png)
+
+#Workouts + Exercises
+
 ![WORKOUT INDEX](assets/images/web2.png)
+
 ![SAMPLE WORKOUT](assets/images/web3.png)
+
 ![SAMPLE EXERCISES](assets/images/web4.png)
+
 ![SAMPLE EXERCISES 2](assets/images/web5.png)
+
+#Entry + Tracker
 ![ENTRY LOG](assets/images/web6.png)
 ![TRACKER](assets/images/web7.png)
 ![TRACKER - VIEW DATA](assets/images/web8.png)
