@@ -21,3 +21,16 @@ TRACKER:
     - In addition when users press get data they will see a visual representation of their entries in a chart 
 
 ![ERD](assets/images/ERD.png)
+
+
+Screenshots:
+
+![HOME](assets/images/web1.png)
+![WORKOUT INDEX](assets/images/web2.png)
+![SAMPLE WORKOUT](assets/images/web3.png)
+![SAMPLE EXERCISES](assets/images/web4.png)
+![SAMPLE EXERCISES 2](assets/images/web5.png)
+![ENTRY LOG](assets/images/web6.png)
+![TRACKER](assets/images/web7.png)
+![TRACKER - VIEW DATA](assets/images/web8.png)
+
