@@ -12,6 +12,36 @@
 {%block content%}
 
 {%include workoutHTML%}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary start-button" data-bs-toggle="modal" data-bs-target="#bodyModal">
+  Start Workout
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="bodyModal" tabindex="-1" aria-labelledby="bodyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="boxingModalLabel">Bodyweight</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="welcomeText">Follow along with these {{type}} Exercises. <br><br>Upon completion of entire list of exercises you have completed 1 set/round.</p>
+        <hr>
+            {%for exercise in exercises%}
+            <div class="exerciseLists">{{exercise.name}} - 30 Seconds</div>
+            {%endfor%}
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <h2 class="workout-detail-header">EXERCISES IN THIS WORKOUT</h2>
 
 <div class="workout-detail-grid">

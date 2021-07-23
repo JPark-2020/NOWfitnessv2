@@ -323,12 +323,11 @@ footer ul li a:hover{
 }
 
 .entry_create a{
+    color: white; 
     text-decoration: none; 
 }
 
-button a{
-    text-decoration: none; 
-}
+
 /* Tracker */
 
 .setcompletion{
@@ -399,5 +398,4 @@ button a{
     text-align: center;
     margin-top: 30px;  
 }
-
 
